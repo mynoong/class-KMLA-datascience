@@ -1,3 +1,3 @@
-## Optimization on age v. Height fitting line
+# Optimization on age v. Height fitting line
 
-# Fitting lines
+## Fitting lines
