@@ -31,6 +31,3 @@ The methodologies include a fundamental linear model featuring numerical gradien
 
 </div>
 
-
-
-
