@@ -12,20 +12,19 @@ T = outfile['T']
     
 def main():
     plt.figure(figsize=(4, 4))
-    M = 4
-    W = reg.fit_gauss_analytic_1d(X, T, M)
+    W_init = [50, 50, 0]
+    W = reg.fit_new_model_1d(X, T, W_init)
     
-    # plot gauss model function
+    # plot new model function
     xb = np.linspace(X_min, X_max, 100)
-    y = reg.gauss_model(xb, W)
+    y = reg.new_model(xb, W)
     plt.plot(xb, y, color = 'black')
     
     # plot datapoints
     plt.plot(X, T, marker = 'o', linestyle = 'None', color = 'yellow')
     plt.xlim(X_min, X_max)
     plt.grid(True)
-    mse = reg.mse_gauss_1d(X, T, W)
-    print('W =' + str(np.round(W, 1)))
+    mse = reg.mse_new_model_1d(X, T, W)
     print("SD ={0:.2f} cm".format(np.sqrt(mse)))
     plt.show()
     

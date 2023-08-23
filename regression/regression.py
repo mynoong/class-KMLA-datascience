@@ -1,36 +1,37 @@
 import numpy as np
+from scipy.optimize import minimize
 
 class regression:
     def __init__(self):
         pass
     
     #Mean square error function
-    def mse_2d(x, t, w):
+    def mse_1d(x, t, w):
         y = w[0] * x + w[1]
         mse = np.mean((y - t)**2)
         return mse
 
     # Slope of mean square error function
     # where MSE function = np.mean((w_0 * x + w_1 - t)**2)
-    def dmse_2d(x, t, w):
+    def dmse_1d(x, t, w):
         y = w[0] * x + w[1]
         d_w0 = 2 * np.mean((y - t) * x)
         d_w1 = 2 * np.mean(y - t)
         return d_w0, d_w1
     
-    def mse_3d(x0, x1, t, w):
+    def mse_2d(x0, x1, t, w):
         y = w[0] * x0 + w[1] * x1 + w[2]
         mse = np.mean((y - t)**2)
         return mse
     
-    def dmse_3d(x0, x1, t, w):
+    def dmse_2d(x0, x1, t, w):
         y = w[0] * x0 + w[1] * x1 + w[2]
         d_w0 = 2 * np.mean((y - t) * x0)
         d_w1 = 2 * np.mean((y - t) * x1)
         d_w2 = 2 * np.mean(y - t)
         return d_w0, d_w1, d_w2
     
-    def fit_analytic_3d(x0, x1, t):
+    def fit_analytic_2d(x0, x1, t):
         cov_tx0 = np.mean(t * x0) - np.mean(t) * np.mean(x0)
         cov_tx1 = np.mean(t * x1) - np.mean(t) * np.mean(x1)
         cov_x0x1 = np.mean(x0 * x1) - np.mean(x0) * np.mean(x1)
@@ -54,12 +55,12 @@ class regression:
         y = y + w[n]
         return y
     
-    def mse_gauss_2d(x, t, w):
+    def mse_gauss_1d(x, t, w):
         y = regression.gauss_model(x, w)
         mse = np.mean((y - t)**2)
         return mse
         
-    def fit_gauss_analytic_2d(x, t, m):
+    def fit_gauss_analytic_1d(x, t, m):
         mu = np.linspace(5, 30, m)
         s = mu[1] - mu[0]
         n = x.shape[0]
@@ -85,8 +86,24 @@ class regression:
             x_test = x[np.fmod(range(n), k) == i] 
             t_test = t[np.fmod(range(n), k) == i] 
             
-            w = regression.fit_gauss_analytic_2d(x_train, t_train, m)
-            mse_train[i] = regression.mse_gauss_2d(x_train, t_train, w)
-            mse_test[i] = regression.mse_gauss_2d(x_test, t_test, w)
+            w = regression.fit_gauss_analytic_1d(x_train, t_train, m)
+            mse_train[i] = regression.mse_gauss_1d(x_train, t_train, w)
+            mse_test[i] = regression.mse_gauss_1d(x_test, t_test, w)
         
         return mse_train, mse_test
+    
+    # implemented the general norm that height converges
+    # to certain degree as you get old to new model function
+    def new_model(x, w):
+        y = w[0] - w[1] * np.exp(-w[2] * x)
+        return y
+    
+    def mse_new_model_1d(x, t, w):
+        y = regression.new_model(x, w)
+        mse = np.mean((y - t)**2)
+        return mse
+    
+    def fit_new_model_1d(x, t, w_init):
+        result = minimize(regression.mse_new_model_1d, w_init, \
+            args = (x, t), method = "CG")
+        return result.x

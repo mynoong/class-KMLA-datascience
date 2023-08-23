@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from regression import regression as reg
 
 # load data points with age on x0 axis, weight on x1 axis, and height on y axis
-outfile = np.load('regression/data_3d.npz')
+outfile = np.load('regression/data_2d.npz')
 X0 = outfile['X0']
 X1 = outfile['X1']
 X0_min = outfile['X0_min']
@@ -18,10 +18,10 @@ def main():
     plt.figure(figsize = (6, 5))
     ax = plt.subplot(1, 1, 1, projection = '3d')
     
-    W = reg.fit_analytic_3d(X0, X1, T)
+    W = reg.fit_analytic_2d(X0, X1, T)
     
     # prints parameter variables w0, w1, w2, and standard deviation SD
-    mse = reg.mse_3d(X0, X1, T, W)
+    mse = reg.mse_2d(X0, X1, T, W)
     print("w0 = {0: .3f}, w1 = {1: .3f}, w2 = {2: .3f}".format(W[0], W[1], W[2]))
     print("SD = {0: .3f} cm".format(np.sqrt(mse)))
     
