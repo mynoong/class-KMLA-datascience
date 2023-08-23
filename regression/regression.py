@@ -98,12 +98,12 @@ class regression:
         y = w[0] - w[1] * np.exp(-w[2] * x)
         return y
     
-    def mse_new_model_1d(x, t, w):
+    def mse_new_model_1d(w, x, t):
         y = regression.new_model(x, w)
         mse = np.mean((y - t)**2)
         return mse
     
     def fit_new_model_1d(x, t, w_init):
         result = minimize(regression.mse_new_model_1d, w_init, \
-            args = (x, t), method = "CG")
+            args = (x, t), method = "powell")
         return result.x

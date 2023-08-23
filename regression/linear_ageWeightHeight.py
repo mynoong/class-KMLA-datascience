@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from regression import regression as reg
 
 # load data points with age on x0 axis, weight on x1 axis, and height on y axis
-outfile = np.load('regression/data_2d.npz')
+outfile = np.load('data_2d.npz')
 X0 = outfile['X0']
 X1 = outfile['X1']
 X0_min = outfile['X0_min']
