@@ -1,10 +1,8 @@
 # What is Neural Network?
-A technique used to build models that can make predictions based on data. From given datasets, it grasps a pattern, establishes relationships between variables, and anticipates future outcomes.
+A computational model inspired by the structure and function of the human brain's interconnected neurons. It is used for complex pattern recognition and decision-making tasks. Neural networks consist of layers of interconnected nodes (neurons) that process and transform data, allowing the network to learn and generalize from examples, making them highly effective in tasks like image and speech recognition.
 
 ## Description
-These programs employ distinct regression algorithms to construct refined models using age versus height datasets. These algorithms examine the influence of age on height and generate regression lines to represent the correlation between these two variables. Furthermore, the dataset incorporates records of age, weight, and height; thus, An additional regression model is employed to establish the correlation between height and the combined influence of age and weight.
 
-The methodologies include a fundamental linear model featuring numerical gradient descent optimization, a linear model integrated with an analytical solution, a linear model enhanced through Gaussian function, and a customized new model incorporating datasets trend.
 
 `dataGenerate.py` : generates arbitrary 2 dimension 3 class dataset for training and test
 
@@ -19,9 +17,10 @@ The methodologies include a fundamental linear model featuring numerical gradien
 
 ## 2 Dimension 3 Classes Classification Result
 
-| 2-layered Neural Network (Mean CEE = 0.42, Cal Time = 12.6 sec) | 2-layered Neural Network w/ Keras  (Mean CEE = , Cal Time = sec) |                           
+| 2-layered Neural Network (Mean CEE = 0.42, Cal Time = 12.6 sec) | 2-layered Neural Network w/ Keras  (Mean CEE = 0.41 , Cal Time = 9.8 sec) |                           
 | ----------------------------------- | ----------------------------------- | 
 | ![neural_network](https://github.com/mynoong/machine-learning-basics/assets/113654157/4ab9749f-be7c-4f93-9fb1-90b78ba23d7d)
- | |
+ |![keras](https://github.com/mynoong/machine-learning-basics/assets/113654157/24a11614-6821-4373-8d25-74db88ab71cf)
+ |
 
 
