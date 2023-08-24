@@ -94,10 +94,12 @@ class neural_network:
         err_train = np.zeros(n)
         err_test = np.zeros(n)
         wv_hist = np.zeros((n, len(wv_init)))
+        
         epsilon = 0.001 # learning rate 
         for i in range(n):
             wv = wv - alpha * neural_network.dmcee_FNN2(wv, x_train, t_train, M, K)
             err_train[i] = neural_network.mcee_FNN2(wv, x_train, t_train, M, K)
             err_test[i] = neural_network.mcee_FNN2(wv, x_test, t_test, M, K)
             wv_hist[i, :] = wv
+            
         return wv, wv_hist, err_train, err_test
