@@ -2,7 +2,9 @@
 A computational model inspired by the structure and function of the human brain's interconnected neurons. It is used for complex pattern recognition and decision-making tasks. Neural networks consist of layers of interconnected nodes (neurons) that process and transform data, allowing the network to learn and generalize from examples, making them highly effective in tasks like image and speech recognition.
 
 ## Description
+The program classifies a given two-dimensional dataset comprising three distinct classes. The program seeks the optimal boundary lines, segmenting data instances into these three classes. The initial layer with three nodes — including a dummy node - adopts the logistic sigmoid function as its activation function. In the second layer, which also features three nodes, softmax function is used as an activation function and facilitates the successful classification of data points.
 
+Notably, there are two code variations executing the identical task; one involves a manual implementation, employing the backpropagation method to determine optimal weight values; the other uses Keras library to implement the same structure as the first code.
 
 `dataGenerate.py` : generates arbitrary 2 dimension 3 class dataset for training and test
 
@@ -19,8 +21,4 @@ A computational model inspired by the structure and function of the human brain'
 
 | 2-layered Neural Network (Mean CEE = 0.42, Cal Time = 12.6 sec) | 2-layered Neural Network w/ Keras  (Mean CEE = 0.41 , Cal Time = 9.8 sec) |                           
 | ----------------------------------- | ----------------------------------- | 
-| ![neural_network](https://github.com/mynoong/machine-learning-basics/assets/113654157/4ab9749f-be7c-4f93-9fb1-90b78ba23d7d)
- |![keras](https://github.com/mynoong/machine-learning-basics/assets/113654157/24a11614-6821-4373-8d25-74db88ab71cf)
- |
-
-
+| ![neural_network](https://github.com/mynoong/machine-learning-basics/assets/113654157/4ab9749f-be7c-4f93-9fb1-90b78ba23d7d)|![keras](https://github.com/mynoong/machine-learning-basics/assets/113654157/24a11614-6821-4373-8d25-74db88ab71cf)|
